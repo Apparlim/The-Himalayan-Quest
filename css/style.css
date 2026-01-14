@@ -1,0 +1,83 @@
+body {
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#map-container {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 4px solid #b8860b;
+    overflow: hidden;
+}
+
+/* The Map Image */
+#game-map {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+/* Buddha Animation Container */
+.buddha-shrine {
+    position: absolute;
+    /* Coordinates for SW region on the new diagonal map */
+    bottom: 20%; 
+    left: 20%;
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* The Buddha Sprite */
+.buddha-sprite {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* Fallback: Golden statue shape */
+    background-color: #FFD700;
+    border-radius: 50% 50% 10% 10%;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    border: 2px solid #B8860B;
+    
+    /* Animation: Levitate */
+    animation: levitate 2.5s ease-in-out infinite alternate, glow 3s infinite;
+}
+
+@keyframes levitate {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px gold; }
+    50% { box-shadow: 0 0 20px gold; }
+    100% { box-shadow: 0 0 5px gold; }
+}
+
+.label {
+    position: absolute;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 4px 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    pointer-events: none;
+    border: 1px solid #555;
+}
+
+/* Adjusted positions for the diagonal map */
+#loc-everest { top: 15%; right: 15%; }
+#loc-kathmandu { top: 40%; right: 40%; }
+#loc-lumbini { bottom: 15%; left: 20%; }
